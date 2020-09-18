@@ -1,0 +1,165 @@
+import static com.kms.katalon.core.checkpoint.CheckpointFactory.findCheckpoint
+import static com.kms.katalon.core.testcase.TestCaseFactory.findTestCase
+import static com.kms.katalon.core.testdata.TestDataFactory.findTestData
+import static com.kms.katalon.core.testobject.ObjectRepository.findTestObject
+import static com.kms.katalon.core.testobject.ObjectRepository.findWindowsObject
+import org.junit.After as After
+import com.kms.katalon.core.checkpoint.Checkpoint as Checkpoint
+import com.kms.katalon.core.cucumber.keyword.CucumberBuiltinKeywords as CucumberKW
+import com.kms.katalon.core.mobile.keyword.MobileBuiltInKeywords as Mobile
+import com.kms.katalon.core.model.FailureHandling as FailureHandling
+import com.kms.katalon.core.testcase.TestCase as TestCase
+import com.kms.katalon.core.testdata.TestData as TestData
+import com.kms.katalon.core.testobject.TestObject as TestObject
+import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
+import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
+import internal.GlobalVariable as GlobalVariable
+
+Mobile.startExistingApplication('surplus.surplus_apps_customer', FailureHandling.STOP_ON_FAILURE)
+
+Mobile.delay(5, FailureHandling.STOP_ON_FAILURE)
+
+Mobile.tap(findTestObject('SurplusId/BeefRiceRegularMenu'), 5)
+
+Mobile.tap(findTestObject('OrderForm/OrderMenuBtn'), 3)
+
+if (Mobile.verifyElementExist(findTestObject('OrderForm/txtBuatKeranjangBaru'), 4) == true) {
+    //Open Cart
+    'Buka order cart\r\n'
+    Mobile.tap(findTestObject('OrderForm/OkeCreateNewCart'), 3)
+
+    'Klik cart untuk melihat order summary\r\n'
+    Mobile.tap(findTestObject('OrderForm/ClickCart'), 2)
+
+    'Verify user able to add menu\r\n'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    'Verify user able to add menu'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    'Verify user able to decrease menu'
+    Mobile.tap(findTestObject('OrderForm/OrderDecreaseMenu'), 0)
+
+    'Verify user able to add menu'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    Mobile.scrollToText('Subtotal')
+	
+	'Add voucher'
+	
+	Mobile.tap(findTestObject('VoucherOrderMenu/VoucherArrow'), 0)
+	
+	Mobile.tap(findTestObject('VoucherOrderMenu/UseVoucherBtn'), 0)
+	
+	//Mobile.tap(findTestObject('VoucherOrderMenu/DeleteVoucher'), 0)
+	
+    'Choose payment method\r\n'
+    Mobile.tap(findTestObject('OrderForm/ChoosePayment'), 0)
+
+    Mobile.tap(findTestObject('OrderForm/PayOvo'), 0)
+
+    Mobile.tap(findTestObject('OrderForm/AddNotes'),0)
+
+    Mobile.setText(findTestObject('OrderForm/NotesTxtField'), 'Testing Catatan', 0)
+    Mobile.tap(findTestObject('OrderForm/SaveNotes'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/RadioBtnBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/ToggleBtnCancelBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/RadioBtnBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/ToggleBtnConfirmBox'), 0)
+    //Mobile.tap(findTestObject('OrderForm/SaveNotes'), 0)
+	
+    Mobile.tap(findTestObject('OrderForm/PayOrderNew'), 0)
+
+    Mobile.tap(findTestObject('OrderForm/ConfirmOrderNew'), 0)
+
+    ///payment page
+    'Choose Ovo as e wallet'
+    Mobile.tap(findTestObject('SurplusId/OvoWallet'), 0)
+
+    //Ovo payment page
+    'Input OVO phone number'
+    Mobile.setText(findTestObject('OvoPaymentPage/OvoPhoneTxt'), '08128988212', 3)
+
+    Mobile.tap(findTestObject('OvoPaymentPage/OvoPayBtn'), 3)
+
+    Mobile.pressBack() 
+	
+	//Mobile.tap(findTestObject('OrderForm/Order'),0)
+    //Mobile.tap(findTestObject('OrderForm/NotesBtn'), 0)
+    //Mobile.setText(findTestObject('OrderForm/txtNotes'), 'Testing Catatan', 0)
+    //Mobile.tap(findTestObject('OrderForm/NotesBtn'), 0)
+    //Mobile.tap(findTestObject('OrderForm/SaveNotes'), 0)
+    ///payment page
+    //Ovo payment page
+	
+} else {
+  
+
+    'Klik cart untuk melihat order summary\r\n'
+    Mobile.tap(findTestObject('OrderForm/ClickCart'), 2)
+
+    'Verify user able to add menu\r\n'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    'Verify user able to add menu'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    'Verify user able to decrease menu'
+    Mobile.tap(findTestObject('OrderForm/OrderDecreaseMenu'), 0)
+
+    'Verify user able to add menu'
+    Mobile.tap(findTestObject('OrderForm/OrderAddMenu'), 0)
+
+    Mobile.scrollToText('Subtotal')
+	
+	'Add voucher'
+	
+	Mobile.tap(findTestObject('VoucherOrderMenu/VoucherArrow'), 0)
+	
+	Mobile.tap(findTestObject('VoucherOrderMenu/UseVoucherBtn'), 0)
+	
+
+    'Choose payment method\r\n'
+    Mobile.tap(findTestObject('OrderForm/ChoosePayment'), 0)
+
+    Mobile.tap(findTestObject('OrderForm/PayOvo'), 0)
+	
+	'Add notes'
+
+    Mobile.tap(findTestObject('OrderForm/AddNotes'),0)
+
+    Mobile.setText(findTestObject('OrderForm/NotesTxtField'), 'Testing Catatan', 0)
+    Mobile.tap(findTestObject('OrderForm/SaveNotes'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/RadioBtnBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/ToggleBtnCancelBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/RadioBtnBox'), 0)
+	
+	Mobile.tap(findTestObject('ToggleBtnBox/ToggleBtnConfirmBox'), 0)
+    //Mobile.tap(findTestObject('OrderForm/SaveNotes'), 0)
+	
+    Mobile.tap(findTestObject('OrderForm/PayOrderNew'), 0)
+
+    Mobile.tap(findTestObject('OrderForm/ConfirmOrderNew'), 0)
+
+    ///payment page
+    'Choose Ovo as e wallet'
+    Mobile.tap(findTestObject('SurplusId/OvoWallet'), 0)
+
+    //Ovo payment page
+    'Input OVO phone number'
+    Mobile.setText(findTestObject('OvoPaymentPage/OvoPhoneTxt'), '08128988212', 3)
+
+    Mobile.tap(findTestObject('OvoPaymentPage/OvoPayBtn'), 3)
+
+    Mobile.pressBack() 
+	
+}
+
